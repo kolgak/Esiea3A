@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 
 class LivreAdapter(private val context: Context,
@@ -24,6 +25,8 @@ class LivreAdapter(private val context: Context,
         val anneeTextView = rowView.findViewById(R.id.txt_annee) as TextView
         anneeTextView.setText("Annee: " + itm.annee.toString());
 
+        val thumbnailImageView = rowView.findViewById(R.id.img_logo) as ImageView
+        thumbnailImageView.setImageResource(itm.logo);
         return rowView
     }
 
@@ -40,3 +43,4 @@ class LivreAdapter(private val context: Context,
     }
 
 }
+

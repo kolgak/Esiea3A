@@ -15,25 +15,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Lien avec le layout activity_main.xml
         setContentView(R.layout.activity_main)
+
+        //Affichage du nom de l'application
         setSupportActionBar(findViewById(R.id.toolbar))
 
+        /* ACTION DU BOUTON BAS GAUCHE (Envelope)
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Test", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+        */
+
 
         //Création de la liste
 
         val listItems = ArrayList<Livre>()
 
-        listItems.add(Livre("One Piece", 1996));
+        listItems.add(Livre("One Piece", 1996, R.drawable.onepiece));
 
-        var test2 = Livre("Naruto", 1997)
+        var test2 = Livre("Naruto", 1997,R.drawable.naruto)
         listItems.add(test2);
 
         for (i in 2 until 5) {
-            listItems.add(Livre("Film $i", 2000 + i));
+            listItems.add(Livre("Film $i", 2000+1 , R.drawable.film));
         }
 
         val adapter = LivreAdapter(this, listItems)
@@ -41,22 +48,6 @@ class MainActivity : AppCompatActivity() {
         listView.adapter = adapter
 
 
-        /*val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
-        listView.adapter = adapter
-
-
-        val arrayAdapter: ArrayAdapter<*>
-        val users = arrayOf(
-            "Virat Kohli", "Rohit Sharma", "Steve Smith",
-            "Kane Williamson", "Ross Taylor"
-        )
-
-        // access the listView from xml file
-        var mListView = findViewById<ListView>(R.id.recipe_list_view)
-        arrayAdapter = ArrayAdapter(this,
-            android.R.layout.simple_list_item_1, users)
-        mListView.adapter = arrayAdapter
-        */
     }
 
 
