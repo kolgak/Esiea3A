@@ -8,8 +8,8 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class LivreAdapter(private val context: Context,
-                   private val dataSource: ArrayList<Livre>
+class MangaAdapter(private val context: Context,
+                   private val dataSource: ArrayList<Manga>
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater
@@ -30,7 +30,7 @@ class LivreAdapter(private val context: Context,
         return rowView
     }
 
-    override fun getItem(position: Int): Livre {
+    override fun getItem(position: Int): Manga {
         return dataSource[position]
     }
 

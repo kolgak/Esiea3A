@@ -11,7 +11,6 @@ import android.widget.ListView
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var listView : ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,24 +27,6 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
         */
-
-
-        //Création de la liste
-
-        val listItems = ArrayList<Livre>()
-
-        listItems.add(Livre("One Piece", 1996, R.drawable.onepiece));
-
-        var test2 = Livre("Naruto", 1997,R.drawable.naruto)
-        listItems.add(test2);
-
-        for (i in 2 until 5) {
-            listItems.add(Livre("Film $i", 2000+1 , R.drawable.film));
-        }
-
-        val adapter = LivreAdapter(this, listItems)
-        listView = findViewById(R.id.recipe_list_view)
-        listView.adapter = adapter
 
 
     }
