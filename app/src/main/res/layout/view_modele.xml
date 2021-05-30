@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:srcCompat="@tools:sample/backgrounds/scenic">
 
-    <ImageView
+
+    <ImageButton
         android:id="@+id/img_logo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
-        android:alpha="0.7"
+        android:alpha="0.9"
         android:scaleType="centerCrop"/>
 
 
@@ -39,6 +40,6 @@
         android:text="202020220"
         android:textStyle="bold"/>
 
-
+        />
 
 </RelativeLayout>

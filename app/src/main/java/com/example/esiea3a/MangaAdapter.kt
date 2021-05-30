@@ -1,6 +1,7 @@
 package com.example.esiea3a
 
 import android.content.Context
+import android.service.autofill.OnClickAction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import android.widget.TextView
 class MangaAdapter(private val context: Context,
                    private val dataSource: ArrayList<Manga>
 ) : BaseAdapter() {
+
+    val listener: (() -> Unit)? = null
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -28,6 +31,7 @@ class MangaAdapter(private val context: Context,
         val thumbnailImageView = rowView.findViewById(R.id.img_logo) as ImageView
         thumbnailImageView.setImageResource(itm.logo);
         return rowView
+
     }
 
     override fun getItem(position: Int): Manga {
@@ -41,6 +45,7 @@ class MangaAdapter(private val context: Context,
     override fun getCount(): Int {
         return dataSource.size
     }
+
 
 }
 

@@ -1,11 +1,20 @@
 package com.example.esiea3a
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import com.example.esiea3a.api.MangaApi
+import com.example.esiea3a.api.MangaResponse
+import retrofit2.Callback
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import android.widget.AdapterView;
 
 
 /**
@@ -36,7 +45,7 @@ class MangaListFragment : Fragment() {
         listItems.add(Manga("Naruto", "Masashi KISHIMOTO", 1999, R.drawable.naruto, "testN"));
         listItems.add(Manga("Dragon Ball Z", "Akira TORIYAMA", 1989, R.drawable.dbz, "testD"));
         listItems.add(Manga("Fullmetal Alchemist", "Hiromu ARAKAWA", 2001, R.drawable.fma, "testF"));
-        listItems.add(Manga("L'attaque des Titans", "Hajime ISAYAMA", 2009, R.drawable.titans, "testF"));
+        listItems.add(Manga("L'attaque des Titans", "Hajime ISAYAMA", 2009, R.drawable.titans, "testA"));
 
 
         val adapter = MangaAdapter(view.context, listItems)
@@ -45,6 +54,35 @@ class MangaListFragment : Fragment() {
         /**view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }*/
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://jikan1.p.rapidapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val mangaApi : MangaApi = retrofit.create(MangaApi::class.java)
+
+        Log.d("JSON", "Requte ici")
+        mangaApi.getMangaList().enqueue(object: Callback<MangaResponse>{
+            override fun onFailure(call: Call<MangaResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+                Log.d("JSON", "ERREUR Rec")
+            }
+
+            override fun onResponse(call: Call<MangaResponse>, response: Response<MangaResponse>) {
+                if (response.isSuccessful && response.body() != null){
+                    Log.d("JSON","Response = ");
+                    val mangaResponse = response.body()!!
+                    Log.d("JSON","Response = "+ mangaResponse);
+                }
+                else {
+                    Log.d("JSON","Response = ");
+                }
+            }
+
+        })
+
+
     }
 
 }
