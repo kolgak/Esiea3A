@@ -14,3 +14,4 @@ EpisodeListFragment : Cette page est cencé affiché la liste des épisode par m
 			Mais je n'arrive pas a l'afficher sur une page. 
 
 
+![Screen1](https://user-images.githubusercontent.com/26939282/120119208-b8865a80-c196-11eb-84c6-2306993f99d3.PNG)
