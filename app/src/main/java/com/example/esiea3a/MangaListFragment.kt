@@ -1,5 +1,6 @@
 package com.example.esiea3a
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -51,6 +52,12 @@ class MangaListFragment : Fragment() {
         val adapter = MangaAdapter(view.context, listItems)
         listView  = view.findViewById(R.id.manga_list_view)
         listView.adapter = adapter
+
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val element = adapter.getItem(position) // The item that was clicked
+            val intent = Intent(view.context, View_Episode::class.java)
+            startActivity(intent)
+        }
         /**view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }*/
@@ -62,7 +69,7 @@ class MangaListFragment : Fragment() {
 
         val mangaApi : MangaApi = retrofit.create(MangaApi::class.java)
 
-        Log.d("JSON", "Requte ici")
+        Log.d("JSON", "Requete ici")
         mangaApi.getMangaList().enqueue(object: Callback<MangaResponse>{
             override fun onFailure(call: Call<MangaResponse>, t: Throwable) {
                 TODO("Not yet implemented")

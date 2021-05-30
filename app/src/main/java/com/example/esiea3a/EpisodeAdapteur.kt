@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class EpisodeAdapteur(private val dataSet: Array<String>) :
+class EpisodeAdapteur(private var dataSet: List<Episode>) :
     RecyclerView.Adapter<EpisodeAdapteur.ViewHolder>() {
 
     /**
@@ -18,8 +18,13 @@ class EpisodeAdapteur(private val dataSet: Array<String>) :
 
         init {
             // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.textView)
+            textView = view.findViewById(R.id.episode_title)
         }
+    }
+
+    fun updateList(list: List<Episode>){
+        dataSet = list
+        notifyDataSetChanged()
     }
 
     // Create new views (invoked by the layout manager)
@@ -36,7 +41,8 @@ class EpisodeAdapteur(private val dataSet: Array<String>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = dataSet[position]
+        val episode:Episode = dataSet[position]
+        viewHolder.textView.text = episode.title
     }
 
     // Return the size of your dataset (invoked by the layout manager)
